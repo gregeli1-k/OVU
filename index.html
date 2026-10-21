@@ -3,7 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
+<meta name="description" content="89 вопросов зачёта по общевоинским уставам: УВС, ДУ, УГиКС. Таймер, самопроверка, учёба по плану.">
+<meta name="theme-color" content="#25562f" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121612" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<meta name="application-name" content="ОВУ">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ОВУ">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;-webkit-text-size-adjust:100%;text-size-adjust:100%}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>ОВУ: ответы к зачёту</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -638,6 +652,12 @@ body.focus .tabs, body.focus #tgl-green, body.focus #tgl-compact { display: none
 </div>
 
 <script>
+/* Совместимость со старыми браузерами */
+if (window.NodeList && !NodeList.prototype.forEach) NodeList.prototype.forEach = Array.prototype.forEach;
+if (window.Element && !Element.prototype.matches) Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+if (window.Element && !Element.prototype.closest) Element.prototype.closest = function (s) { var el = this; while (el && el.nodeType === 1) { if (el.matches(s)) return el; el = el.parentElement; } return null; };
+if (!Array.prototype.findIndex) Array.prototype.findIndex = function (f) { for (var i = 0; i < this.length; i++) if (f(this[i], i, this)) return i; return -1; };
+if (typeof Object.assign !== 'function') Object.assign = function (t) { for (var i = 1; i < arguments.length; i++) { var s = arguments[i]; if (s) for (var k in s) if (Object.prototype.hasOwnProperty.call(s, k)) t[k] = s[k]; } return t; };
 (function () {
   var KEY = 'ovu-state-v1';
   var st = { tab: 'all', green: false, quiz: false, done: {} };
@@ -791,5 +811,10 @@ body.focus .tabs, body.focus #tgl-green, body.focus #tgl-compact { display: none
 })();
 </script>
 
+<script>
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+  window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+}
+</script>
 </body>
 </html>
