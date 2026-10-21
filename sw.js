@@ -1,5 +1,5 @@
 /* Офлайн-режим: сайт открывается без интернета после первого захода */
-var CACHE = 'ovu-v1';
+var CACHE = 'ovu-v2';
 var FILES = ['./', 'index.html', 'favicon.svg', 'favicon.ico', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png', 'maskable-192.png', 'maskable-512.png', 'site.webmanifest'];
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(FILES); }).then(function () { return self.skipWaiting(); }));
